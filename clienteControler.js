@@ -16,45 +16,41 @@ app.get('/cliente', async function(req, res) {
 //  busca os dados de um cliente se um id for passado ou
 //  devolve todos os clientes caso para id seja recebido 'todos'
 app.get('/cliente/:id', async function(req, res) {
-  let clientes = await clienteModel.busca(req.params.id);
-  res.status(200);
-  res.send(clientes);
+  let clientes = await clienteModel.busca();
+  res.status(200).send(clientes);
 });
 
 // insere um registro no BD
 app.post('/cliente', async function(req, res) {
-  let ret = await clienteModel.insere(req.body);
-  if(ret.affectedRows<1) {
-    res.sendStatus(500);
-  }else{
+  try{
+    let ret = await clienteModel.insere(req.body);
     res.sendStatus(201);
+  }catch{
+    res.sendStatus(500);
   }
 });
   
 // apaga um regitro.
 app.delete('/cliente/:id', async function(req, res) {
-  let ret = await clienteModel.delete(req.params.id);
-  if(ret.affectedRows<1) {
-    console.log(ret); // results contains rows returned by server
-    res.sendStatus(500);
-  }else{
+  try{
+    let ret = await clienteModel.delete(req.params.id);
     res.sendStatus(201);
+  }catch{
+    res.sendStatus(500);
   }
 });
 
 // altera um registro especifico 
 app.put('/cliente', async function(req, res) {
-
-  let ret = await clienteModel.altera(req.body);
-  if(ret.affectedRows<1) {
-    console.log(ret); // results contains rows returned by server
-    res.sendStatus(500);
-  }else{
+  try{
+    let ret = await clienteModel.altera(req.body);
     res.sendStatus(201);
+  }catch{
+    res.sendStatus(500);
   }
 });
 
 server = app.listen(8081,function (){
   var port = server.address().port;
-  console.log('Example app listening at http://localhost:%s', port);
+  console.log('clienteControler escutando em http://localhost:%s', port);
 });

@@ -43,7 +43,6 @@ async function altEnvia(){
     })
     if(ret.status<300){
         alert('Registro alterado.')    
-        buscaTabClientes();
     }else{
         alert('Falha na alteracao.')
     }
