@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <script src="/index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onLoad="buscaTabClientes()">
+    <h1>Endpoint Cliente</h1>
+    <hr>
+    <h2>Novo Cliente</h2>
+    <form action="/cliente" method="POST" onsubmit="insere(event)">
+        Nome:<input type="text" name="nome" value="Marcelo" id="nome"><br>
+        Idade:<input type="text" name="idade" value="56" size="3" id="idade"><br>
+        <input type="submit">
+    </form>
+    <hr>
+    <h2>Clientes Já Cadastrados</h2>
+    <table id="tabClientes">
+
+    </table>
+    <div id="divAltera">
+        <h2>Alterar Cliente</h2>
+        <input type="hidden" id="iptId">
+        <label>Nome:<input type="text" id="iptNome"> </label><br>
+        <label>Idade:<input type="text" id="iptIdade"> </label><br>
+        <button onClick="altEnvia()">Altera</button><button onclick="altDesiste()">Desiste</button>
+    </div>
+</body>
+</html>

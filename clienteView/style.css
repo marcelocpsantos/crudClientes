@@ -1,0 +1,13 @@
+#divAltera {
+    background-color:aquamarine;
+    width:fit-content;
+    padding:50px;
+    border:2px solid blue;
+    position : fixed;
+    top:100px;
+    left:100px;
+    display: none;
+}
+input,button{
+    margin:5px;
+}
